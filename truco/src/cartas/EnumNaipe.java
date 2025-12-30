@@ -1,6 +1,6 @@
 package cartas;
 
-public enum EnumNipe {
+public enum EnumNaipe {
     Zap,
     Copas,
     Espadas,
