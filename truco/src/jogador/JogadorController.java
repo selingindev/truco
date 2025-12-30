@@ -6,8 +6,11 @@ import cartas.CartaModel;
 
 public class JogadorController {
     
-    public void jogarCarta(JogadorModel jogador, CartaModel carta) {
-        if(jogador.isYourTurn = false) return;
+    public CartaModel jogarCarta(JogadorModel jogador, CartaModel carta) {
+        if(jogador.isYourTurn = false) return null;
+        removerCarta(jogador, carta);
+        return carta;
+    
     }
 
     public List<CartaModel> verMao(JogadorModel jogador) {
@@ -19,6 +22,8 @@ public class JogadorController {
         maoAtual.remove(carta);
         jogador.setMao(maoAtual);
     }
+
+    
 
 
 }
