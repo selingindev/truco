@@ -12,6 +12,7 @@ public class BaralhoController {
 
     private BaralhoModel baralhoModel = new BaralhoModel();
     private List<CartaModel> cartas = new ArrayList<>();
+    int index = 0;
 
     public void buildCartas() {
         int peso = 4;
@@ -67,7 +68,7 @@ public class BaralhoController {
                         carta.setPeso(18);
                         break;
                 } 
-                
+                System.out.println("Manilha: " + carta.getNumero() + " de " + carta.getNaipe() + " com peso " + carta.getPeso());
             }
         }
     }
@@ -78,6 +79,15 @@ public class BaralhoController {
 
     private void destruirBaralho() {
         cartas.clear();
+    }
+
+    private void quemSai(List<JogadorModel> jogadores){
+        int numeroJogadores = jogadores.size(); 
+        if(numeroJogadores - index == 0){
+            index = 0;
+            return;
+        };
+        index++;
     }
 
     public void destribuirCartas(List<JogadorModel> jogadores) {
