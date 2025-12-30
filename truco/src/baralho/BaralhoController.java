@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cartas.CartaModel;
-import cartas.EnumNipe;
+import cartas.EnumNaipe;
 import cartas.EnumNumero;
 import jogador.JogadorModel;
 
@@ -17,7 +17,7 @@ public class BaralhoController {
         int peso = 4;
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 4; j++) {
-                cartas.add(new CartaModel(EnumNumero.values()[i], peso, EnumNipe.values()[j]));
+                cartas.add(new CartaModel(EnumNumero.values()[i], peso, EnumNaipe.values()[j]));
             }
             peso++;
         }
@@ -35,8 +35,11 @@ public class BaralhoController {
         return carta;
     }
 
-    private CartaModel virarCarta() {
+    private void virarCarta() {
         baralhoModel.setVira(darCarta());
+    }
+
+    public CartaModel getVira() {
         return baralhoModel.getVira();
     }
 
@@ -49,7 +52,7 @@ public class BaralhoController {
         for (int i = 0; i < numeroJogadores; i++) {
             if (numeroJogadores % 2 == 3 && i == 3) virarCarta();
             if (numeroJogadores % 2 == 2 && i == 2) virarCarta();
-            if (numeroJogadores % 2 == 1 && i == 1)  virarCarta();          
+            if (numeroJogadores % 2 == 0 && i == 1)  virarCarta();          
             JogadorModel jogador = jogadores.get(i);
             CartaModel[] mao = new CartaModel[3];
             for (int j = 0; j < 3; j++) {
@@ -57,7 +60,7 @@ public class BaralhoController {
             }
             jogador.setMao(mao);
         }
-
+        System.out.println("Cartas não distribuídas: " + cartas.size());
     }
 
 }
