@@ -36,7 +36,40 @@ public class BaralhoController {
     }
 
     private void virarCarta() {
-        baralhoModel.setVira(darCarta());
+        CartaModel carta = darCarta();
+        baralhoModel.setVira(carta);
+        definirManilha();
+    }
+
+    private void definirManilha(){
+        CartaModel vira = baralhoModel.getVira();
+        int indexManilha = vira.getNumero().ordinal() + 1;  
+        if (indexManilha >= EnumNumero.values().length) {
+            indexManilha = 0;
+        }
+        alterarPesoManilha(EnumNumero.values()[indexManilha]);   
+    }
+
+    private void alterarPesoManilha(EnumNumero manilha){
+        for (CartaModel carta : cartas) {
+            if (carta.getNumero() == manilha) {
+                switch (carta.getNaipe()) {
+                    case Balão:
+                        carta.setPeso(15);
+                        break;
+                    case Espadas:
+                        carta.setPeso(16);
+                        break;
+                    case Copas:
+                        carta.setPeso(17);
+                        break;
+                    case Zap:
+                        carta.setPeso(18);
+                        break;
+                } 
+                
+            }
+        }
     }
 
     public CartaModel getVira() {
