@@ -7,8 +7,9 @@ import cartas.CartaModel;
 public class JogadorController {
     
     public CartaModel jogarCarta(JogadorModel jogador, CartaModel carta) {
-        if(jogador.isYourTurn = false) return null;
+        if(!jogador.isYourTurn) return null;
         removerCarta(jogador, carta);
+        System.out.println(jogador.getNome() + " jogou " + carta.getNumero() + " de " + carta.getNaipe());
         return carta;
     
     }
