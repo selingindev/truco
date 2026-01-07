@@ -8,7 +8,7 @@ public class JogadorModel {
 
     private String nome;
     private List<CartaModel> mao;
-    public boolean isYourTurn = false;
+    public boolean isYourTurn = true;
 
     public JogadorModel(String nome, List<CartaModel> mao) {
         this.nome = nome;   
@@ -33,4 +33,5 @@ public class JogadorModel {
     public void setTurn(boolean turn){
         this.isYourTurn = turn;
     }
+
 }
