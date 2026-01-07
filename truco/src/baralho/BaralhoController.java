@@ -92,10 +92,9 @@ public class BaralhoController {
 
     public void destribuirCartas(List<JogadorModel> jogadores) {
         int numeroJogadores = jogadores.size();
-        for (int i = 0; i < numeroJogadores; i++) {
-            if (numeroJogadores % 2 == 3 && i == 3) virarCarta();
-            if (numeroJogadores % 2 == 2 && i == 2) virarCarta();
-            if (numeroJogadores % 2 == 0 && i == 1)  virarCarta();          
+        //virando carta de início para não ter problemas com peso
+        virarCarta();
+        for (int i = 0; i < numeroJogadores; i++) {      
             JogadorModel jogador = jogadores.get(i);
             List<CartaModel> mao = new ArrayList<>();
             for (int j = 0; j < 3; j++) {
