@@ -2,19 +2,12 @@ package rodada;
 
 import java.util.List;
 
-import baralho.BaralhoModel;
+import baralho.BaralhoController;
 import jogador.JogadorModel;
 
 public class Rodada {
-   
-    BaralhoModel baralho;   
-     
-
-    
-
-
-
-
+    List<JogadorModel> jogadores;
+    BaralhoController baralhoController;
     
      
 }
