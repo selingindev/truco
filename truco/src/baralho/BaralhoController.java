@@ -10,9 +10,9 @@ import jogador.JogadorModel;
 
 public class BaralhoController {
 
-    private BaralhoModel baralhoModel = new BaralhoModel();
+    private BaralhoModel baralhoModel = new BaralhoModel(); 
     private List<CartaModel> cartas = new ArrayList<>();
-    int index = 0;
+   
 
     public void buildCartas() {
         int peso = 4;
@@ -30,8 +30,8 @@ public class BaralhoController {
     }
 
     private CartaModel darCarta() {
-        int idx = (int) (Math.random() * cartas.size());
-        CartaModel carta = cartas.get(idx);
+        int cartaAleatoria = (int) (Math.random() * cartas.size());
+        CartaModel carta = cartas.get(cartaAleatoria);
         removerCarta(carta);
         return carta;
     }
@@ -81,14 +81,7 @@ public class BaralhoController {
         cartas.clear();
     }
 
-    private void quemSai(List<JogadorModel> jogadores){
-        int numeroJogadores = jogadores.size(); 
-        if(numeroJogadores - index == 0){
-            index = 0;
-            return;
-        };
-        index++;
-    }
+  
 
     public void destribuirCartas(List<JogadorModel> jogadores) {
         int numeroJogadores = jogadores.size();
