@@ -20,19 +20,31 @@ public class RodadaController {
             index = 0;
             return index;
         }
-        ;
-        int jogadorAtual = index;
+        int quemSai = index;
         index++;
-        return jogadorAtual;
+        return quemSai;
     }
 
-    void jogarRodada(CartaModel carta, List<JogadorModel> jogadores) {
+    void jogarRodada(CartaModel carta, List<JogadorModel> jogador) {
+        jogador.get(index).setTurn(true);
+        jogadorController.jogarCarta(jogador.get(index), carta);
         if (index % 2 == 0) {
             cartasJogadasAzul.add(carta);
         } else {
             cartasJogadasVermelho.add(carta);
         }
-        jogadorController.jogarCarta(jogadores.get(index), carta);
+           jogador.get(index).setTurn(false);
+    }
+
+    private boolean faltaAlguem(List<JogadorModel> jogadores){
+        int indexJogador = index + 1;
+        return indexJogador < jogadores.size();
+    }
+
+    void continuarRodada(List<JogadorModel> jogadores){
+     if(faltaAlguem(jogadores)){
+        
+     }
     }
 
 }
