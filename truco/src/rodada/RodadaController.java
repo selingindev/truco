@@ -13,6 +13,7 @@ public class RodadaController {
     List<CartaModel> cartasJogadasAzul = new ArrayList<>();
     List<CartaModel> cartasJogadasVermelho = new ArrayList<>();
     int index = 0;
+    int pesoRodada = 1;
 
     private int quemSai(List<JogadorModel> jogadores) {
         int numeroJogadores = jogadores.size();
@@ -33,18 +34,27 @@ public class RodadaController {
         } else {
             cartasJogadasVermelho.add(carta);
         }
-           jogador.get(index).setTurn(false);
+        jogador.get(index).setTurn(false);
     }
 
-    private boolean faltaAlguem(List<JogadorModel> jogadores){
-        int indexJogador = index + 1;
-        return indexJogador < jogadores.size();
+    private boolean faltaAlguem(List<JogadorModel> jogadores) {
+        int indexFalta = index + 1;
+        return indexFalta < jogadores.size();
     }
 
-    void continuarRodada(List<JogadorModel> jogadores){
-     if(faltaAlguem(jogadores)){
-        
-     }
+    void continuarRodada(List<JogadorModel> jogadores) {
+        if (faltaAlguem(jogadores)) {
+
+        }
+    }
+
+    private int quemGanhou(List<CartaModel> cartasJogadasAzul, List<CartaModel> cartasJogadasVermelho) {
+        int maiorAzul = cartasJogadasAzul.get(index)
+return 1;
+    }
+
+    private int pesoRodada() {
+        return pesoRodada = pesoRodada + 3;
     }
 
 }
