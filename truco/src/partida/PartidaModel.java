@@ -1,16 +1,16 @@
 package partida;
 
+import java.util.List;
+
+import jogador.JogadorModel;
+
 public class PartidaModel {
     int pontosPartidaAzul = 0;
     int pontosPartidaVermelho = 0;
-    
     int pontosTimeAzul = 0;
     int pontosTimeVermelho = 0;
-    PartidaModel partida;
-
-    public PartidaModel(PartidaModel partida) {
-        this.partida = partida;
-    }
+    List<JogadorModel> jogadores;
+    
 
     public int getPontosPartidaAzul() {
         return pontosPartidaAzul;
@@ -44,7 +44,6 @@ public class PartidaModel {
         this.pontosTimeVermelho = pontosTimeVermelho;
     }
 
-    
 
 
 
