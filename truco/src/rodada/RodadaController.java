@@ -3,6 +3,7 @@ package rodada;
 import java.util.ArrayList;
 import java.util.List;
 
+import baralho.BaralhoModel;
 import cartas.CartaModel;
 import jogador.JogadorController;
 import jogador.JogadorModel;
@@ -12,10 +13,11 @@ import rodada.EnumRodada.QuemVenceuEnum;
 public class RodadaController {
 
     JogadorController jogadorController = new JogadorController();
+    BaralhoModel baralhoModel = new BaralhoModel();
+    RodadaModel rodadaModel = new RodadaModel(baralhoModel);
     List<CartaModel> cartasJogadasAzul = new ArrayList<>();
     List<CartaModel> cartasJogadasVermelho = new ArrayList<>();
     int index = 0;
-    int pesoRodada = 1;
     
 
     private int quemSai(List<JogadorModel> jogadores) {
@@ -45,19 +47,12 @@ public class RodadaController {
         return indexFalta < jogadores.size();
     }
 
-    void continuarRodada(List<JogadorModel> jogadores, ) {
+   public QuemVenceuEnum continuarRodada(List<JogadorModel> jogadores) {
         if (faltaAlguem(jogadores)) {
             
-        }else{
-           QuemVenceuEnum vencedor = quemGanhou(cartasJogadasAzul, cartasJogadasVermelho);
-           if(vencedor == QuemVenceuEnum.Azul){
-            //time azul ganha a rodada
-           } else if (vencedor == QuemVenceuEnum.Vermelho){
-            //time vermelho ganha a rodada
-           } else {
-            //paxou
-           }
         }
+           QuemVenceuEnum vencedor = quemGanhou(cartasJogadasAzul, cartasJogadasVermelho);
+           return vencedor;
     }
 
     private QuemVenceuEnum quemGanhou(List<CartaModel> cartasJogadasAzul, List<CartaModel> cartasJogadasVermelho) {
@@ -84,8 +79,8 @@ public class RodadaController {
         return maior;
     }
 
-    private int pesoRodada() {
-        return pesoRodada = pesoRodada + 3;
+    public int pesoRodada() {
+        return rodadaModel.pesoRodada = rodadaModel.pesoRodada + 3;
     }
 
 
