@@ -6,6 +6,8 @@ import java.util.List;
 import cartas.CartaModel;
 import jogador.JogadorController;
 import jogador.JogadorModel;
+import rodada.EnumRodada.QuemVenceuEnum;
+
 
 public class RodadaController {
 
@@ -14,6 +16,7 @@ public class RodadaController {
     List<CartaModel> cartasJogadasVermelho = new ArrayList<>();
     int index = 0;
     int pesoRodada = 1;
+    
 
     private int quemSai(List<JogadorModel> jogadores) {
         int numeroJogadores = jogadores.size();
@@ -42,19 +45,48 @@ public class RodadaController {
         return indexFalta < jogadores.size();
     }
 
-    void continuarRodada(List<JogadorModel> jogadores) {
+    void continuarRodada(List<JogadorModel> jogadores, ) {
         if (faltaAlguem(jogadores)) {
-
+            
+        }else{
+           QuemVenceuEnum vencedor = quemGanhou(cartasJogadasAzul, cartasJogadasVermelho);
+           if(vencedor == QuemVenceuEnum.Azul){
+            //time azul ganha a rodada
+           } else if (vencedor == QuemVenceuEnum.Vermelho){
+            //time vermelho ganha a rodada
+           } else {
+            //paxou
+           }
         }
     }
 
-    private int quemGanhou(List<CartaModel> cartasJogadasAzul, List<CartaModel> cartasJogadasVermelho) {
-        int maiorAzul = cartasJogadasAzul.get(index)
-return 1;
+    private QuemVenceuEnum quemGanhou(List<CartaModel> cartasJogadasAzul, List<CartaModel> cartasJogadasVermelho) {
+        int maiorAzul = buscarMaior(cartasJogadasAzul);
+        int maiorVermelho = buscarMaior(cartasJogadasVermelho);
+        if (maiorAzul > maiorVermelho){
+            return QuemVenceuEnum.Azul;
+        } else if (maiorVermelho > maiorAzul){
+            return QuemVenceuEnum.Vermelho;
+        }else{
+            return QuemVenceuEnum.Paxou; 
+        }
+      }
+    
+
+    private int buscarMaior(List<CartaModel> cartasJogadas){
+        int maior = 0;
+        for(int i = 0; i < cartasJogadas.size(); i++) {
+            CartaModel carta = cartasJogadas.get(i);
+            if (carta.getPeso() > maior) {
+                 maior = carta.getPeso();
+            }
+        }
+        return maior;
     }
 
     private int pesoRodada() {
         return pesoRodada = pesoRodada + 3;
     }
+
 
 }
