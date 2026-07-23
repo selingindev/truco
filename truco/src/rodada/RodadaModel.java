@@ -1,9 +1,11 @@
 package rodada;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import baralho.BaralhoModel;
+import rodada.EnumRodada.QuemVenceuEnum;
 
 public class RodadaModel {
    
@@ -11,6 +13,7 @@ public class RodadaModel {
     Map<String, Integer> placar = new HashMap<>();
     int pesoRodada = 1;
     int pesoTruco = 3;
+    ArrayList<QuemVenceuEnum> quemVenceuRodada;
 
     
     RodadaModel(BaralhoModel baralho){
@@ -56,6 +59,12 @@ public class RodadaModel {
     public void setPesoTruco(int pesoTruco) {
         this.pesoTruco = pesoTruco;
     }
-    
-     
+
+    public ArrayList<QuemVenceuEnum> getQuemVenceuRodada() {
+        return quemVenceuRodada;
+    }
+
+    public void setQuemVenceuRodada(ArrayList<QuemVenceuEnum> quemVenceuRodada) {
+        this.quemVenceuRodada = quemVenceuRodada;
+    }
 }
