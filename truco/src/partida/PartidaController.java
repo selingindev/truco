@@ -8,13 +8,11 @@ public class PartidaController {
     int quantidadeJogadores = partidaModel.jogadores.size();
 
     private void aumentarPontos(){
-        QuemVenceuEnum vencedor = rodadaController.continuarRodada(partidaModel.jogadores);
-        if(vencedor == QuemVenceuEnum.Azul){
-        partidaModel.pontosPartidaAzul = rodadaController.pesoRodada();
-           } else if (vencedor == QuemVenceuEnum.Vermelho){
-                    partidaModel.pontosPartidaVermelho = rodadaController.pesoRodada();
-           } else {
-            return;
+        QuemVenceuEnum vencedor = rodadaController.quemGanhouRodada();
+        if(vencedor.equals(QuemVenceuEnum.Azul)){
+            partidaModel.setPontosTimeAzul(rodadaController.pesoRodada());
+           } else if (vencedor.equals(QuemVenceuEnum.Vermelho)){
+            partidaModel.setPontosTimeVermelho(rodadaController.pesoRodada());
            }
         }
     }
