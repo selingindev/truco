@@ -29,17 +29,20 @@ public class BaralhoController {
         cartas.remove(carta);
     }
 
-    private CartaModel darCarta() {
+    private CartaModel darCarta(int indexPlayer) {
         int cartaAleatoria = (int) (Math.random() * cartas.size());
         CartaModel carta = cartas.get(cartaAleatoria);
+        carta.setIndexAssociado(indexPlayer);
         removerCarta(carta);
         return carta;
     }
 
     private void virarCarta() {
-        CartaModel carta = darCarta();
+        int cartaAleatoria = (int) (Math.random() * cartas.size());
+        CartaModel carta = cartas.get(cartaAleatoria);
         baralhoModel.setVira(carta);
         definirManilha();
+        removerCarta(carta);
     }
 
     private void definirManilha(){
@@ -91,7 +94,7 @@ public class BaralhoController {
             JogadorModel jogador = jogadores.get(i);
             List<CartaModel> mao = new ArrayList<>();
             for (int j = 0; j < 3; j++) {
-                mao.add(darCarta());
+                mao.add(darCarta(i));
             }
             jogador.setMao(mao);
         }
