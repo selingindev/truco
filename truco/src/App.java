@@ -4,12 +4,14 @@ import java.util.List;
 import baralho.BaralhoController;
 import jogador.JogadorController;
 import jogador.JogadorModel;
+import rodada.RodadaController;
 
 public class App {
     public static void main(String[] args) throws Exception {
         BaralhoController baralhoController = new BaralhoController();
         JogadorController jogadorController = new JogadorController();
         List<JogadorModel> jogadores = new ArrayList<>();
+        RodadaController rodadaController = new RodadaController();
 
 
         JogadorModel jogador1 = new JogadorModel("Player1", null);
@@ -29,9 +31,24 @@ public class App {
         }
         System.out.println(baralhoController.getVira().getNumero() + " de " + baralhoController.getVira().getNaipe() + " é a carta virada."); 
 
-        jogadorController.jogarCarta(jogador1, jogador1.getMao().get(0));
-        jogadorController.jogarCarta(jogador2, jogador2.getMao().get(0));
 
-        
+
+            rodadaController.quemSai(jogadores);
+            rodadaController.jogarRodada(jogador1.getMao().get(0), jogadores);
+            rodadaController.jogarRodada(jogador2.getMao().get(2), jogadores);
+            rodadaController.quemGanhouQueda();
+
+            rodadaController.quemSai(jogadores);
+            rodadaController.jogarRodada(jogador1.getMao().get(1), jogadores);
+            rodadaController.jogarRodada(jogador2.getMao().get(1), jogadores);
+            rodadaController.quemGanhouQueda();
+
+            rodadaController.quemSai(jogadores);
+            rodadaController.jogarRodada(jogador1.getMao().get(0), jogadores);
+            rodadaController.jogarRodada(jogador2.getMao().get(0), jogadores);
+            rodadaController.quemGanhouQueda();
+
+            rodadaController.quemGanhouRodada();
+
     }
 }
